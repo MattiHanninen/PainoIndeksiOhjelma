@@ -15,7 +15,7 @@ public class PainoOyPainonLaskuOhjelma {
     public static void main (String [] args) {
 
         // Luodaan rekisteroitynyt testikayttaja
-        RekisteroitymisLuokka Kayttaja1 = new RekisteroitymisLuokka("Mauri Pekkarinen", 182.50, "Mare47", "MaurinSalasana1234");
+        RekisteroitymisLuokka Kayttaja1 = new RekisteroitymisLuokka("Mauri Pekkarinen", 182.50, 85.50, "Mare47", "MaurinSalasana1234");
 
         // Testitulostus
         System.out.println(Kayttaja1);
