@@ -12,6 +12,7 @@
     // Maaritetaan attribuutit
     String userRealName;
     double userHeight;
+    double userWeight;
     String userName;
     String userPassword;
 
@@ -23,9 +24,10 @@
     }
     
     // Konstruktori jolle valitetaan parametrina kayttajen perustiedot
-    RekisteroitymisLuokka(String newName, double newHeight, String newUser, String newPassword) {
+    RekisteroitymisLuokka(String newName, double newHeight, double newWeight, String newUser, String newPassword) {
         userRealName = newName;
         userHeight = newHeight;
+        userWeight = newWeight;
         userName = newUser;
         userPassword = newPassword;
     }
@@ -47,6 +49,14 @@
     // Metodi joka asettaa kayttajan pituuden
     public void setHeight(double newHeight) {
         userHeight = newHeight;
+    }
+    // Metodi joka palauttaa kayttajan painon
+    double getWeight() {
+        return userWeight;
+    }
+    // Metodi joka asettaa kayttajan painon
+    public void setWeight(double newWeight) {
+        userWeight = newWeight;
     }
     // Metodi joka palauttaa kayttajan kayttajatunnuksen
     String getUserName() {
