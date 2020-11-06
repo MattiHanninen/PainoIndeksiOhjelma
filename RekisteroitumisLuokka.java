@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * RekisteroitymisLuokka.java
  * Kehitysymparistot projektin ohjelman osa
@@ -81,7 +83,26 @@
     public String toString() {
         return "Kayttajatunnus: " + getUserName() + "\n" +
             "Nimi: " + getRealName() + "\n" +
-            "Pituus: " + getHeight();
+            "Pituus: " + getHeight() + "\n" +
+            "Paino: " + getWeight();
+    }
+
+    // Metodi joka kysyy tiedot kayttajalta
+    public void askUserInputs() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Rekisteroituminen sovellukseen. Anna tietosi:");
+        System.out.print("Kayttajatunnus: ");
+        setUserName(input.nextLine());
+        System.out.print("Salasana: ");
+        setPassword(input.nextLine());
+        System.out.print("Nimi: ");
+        setRealName(input.nextLine());
+        System.out.print("Pituus: ");
+        setHeight(input.nextDouble());
+        input.nextLine();       // Enter
+        System.out.print("Paino: ");
+        setWeight(input.nextDouble());
+        input.nextLine();       // Enter
     }
     
  }
