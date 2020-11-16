@@ -44,5 +44,7 @@ class BMI {
             this.returnvalue = System.out.println("Henkilö on sairaaloisesti ylipainoinen");
             return returnvalue;
         }
+        this.returnvalue = System.out.println("Painoa tai pituutta ei ole asetettu.");
+        return returnvalue;
     }
 }
