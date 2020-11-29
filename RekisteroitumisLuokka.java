@@ -9,29 +9,25 @@ import java.util.Scanner;
  */
 
  // Maaritellaan luokka
- class RekisteroitymisLuokka {
+ class RekisteroitymisLuokka extends BMI {
 
     // Maaritetaan attribuutit
-    String userRealName;
-    double userHeight;
-    double userWeight;
-    String userName;
-    String userPassword;
-
-    // Maaritellaan taulukkoattribuutti kayttajatietojen tallentamista varten. 100 paikkaa oletuksena. VAIN HAHMOTTELUA VARTEN, EI VIELA TOIMINNASSA.
-    private RekisteroitymisLuokka [] UserDatabase = new RekisteroitymisLuokka[100];
+    protected String userRealName;
+    protected String userName;
+    protected String userPassword;
+    protected boolean accountLocked = false;
 
     // Oletuskonstruktori
     RekisteroitymisLuokka() {
     }
     
     // Konstruktori jolle valitetaan parametrina kayttajen perustiedot
-    RekisteroitymisLuokka(String newName, double newHeight, double newWeight, String newUser, String newPassword) {
+    RekisteroitymisLuokka(double weight, double height, double BMI, String returnvalue, String newName, String newUser, String newPassword, boolean accountLocked) {
+        super (weight, height, BMI, returnvalue);
         userRealName = newName;
-        userHeight = newHeight;
-        userWeight = newWeight;
         userName = newUser;
         userPassword = newPassword;
+        this.accountLocked = accountLocked;
     }
 
     // Luodaan aksessorit ja mutaattorit (getterit ja setterit) attribuuteille
@@ -44,22 +40,6 @@ import java.util.Scanner;
     public void setRealName(String newName) {
         userRealName = newName;
     }
-    // Metodi joka palauttaa kayttajan pituuden
-    double getHeight() {
-        return userHeight;
-    }
-    // Metodi joka asettaa kayttajan pituuden
-    public void setHeight(double newHeight) {
-        userHeight = newHeight;
-    }
-    // Metodi joka palauttaa kayttajan painon
-    double getWeight() {
-        return userWeight;
-    }
-    // Metodi joka asettaa kayttajan painon
-    public void setWeight(double newWeight) {
-        userWeight = newWeight;
-    }
     // Metodi joka palauttaa kayttajan kayttajatunnuksen
     String getUserName() {
         return userName;
@@ -68,23 +48,27 @@ import java.util.Scanner;
     public void setUserName(String newUser) {
         userName = newUser;
     }
+    // Metodi joka palauttaa kayttajan tilin statuksen
+    boolean getAccountStatus() {
+        return accountLocked;
+    }
+    // Metodi joka asettaa kayttajan tilin statuksen
+    public void setAccountStatus(boolean newAccountLocked) {
+        accountLocked = newAccountLocked;
+    }
     // Metodi joka palauttaa kayttajan salasanan
     String getPassword() {
         return userPassword;
     }
     // Metodi joka asettaa kayttajan salasanan
-    public void setPassword(String newUserPassword) {
-        userPassword = newUserPassword;
+    public void setPassword(String newPassword) {
+        userPassword = newPassword;
     }
-
     //////////////////////////////////////////////////////////////////
 
-    // Metodi joka tulostaa kayttajan perustiedot, salasanaa lukuunottamatta
+    // Metodi joka tulostaa kayttajan painon ja painoindeksin
     public String toString() {
-        return "Kayttajatunnus: " + getUserName() + "\n" +
-            "Nimi: " + getRealName() + "\n" +
-            "Pituus: " + getHeight() + "\n" +
-            "Paino: " + getWeight();
+        return "Paino: " + getWeight() + " Painoindeksi: " + (Math.round(getBMIValue() * 100) / 100.00) + " " + getBMI();
     }
 
     // Metodi joka kysyy tiedot kayttajalta
@@ -97,12 +81,11 @@ import java.util.Scanner;
         setPassword(input.nextLine());
         System.out.print("Nimi: ");
         setRealName(input.nextLine());
-        System.out.print("Pituus: ");
+        System.out.print("Pituus (muodossa 1,87): ");
         setHeight(input.nextDouble());
         input.nextLine();       // Enter
-        System.out.print("Paino: ");
+        System.out.print("Paino (muodossa 80,50): ");
         setWeight(input.nextDouble());
         input.nextLine();       // Enter
     }
-    
  }
