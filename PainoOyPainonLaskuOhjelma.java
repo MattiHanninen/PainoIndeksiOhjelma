@@ -211,7 +211,7 @@ public class PainoOyPainonLaskuOhjelma {
                                                 dateFound = true;
 
                                                 System.out.println("Painotietojen keskiarvo: " + weightAveragePrint);
-                                                System.out.println("Painoindeksien keskiarvo: " + (Math.round(bmiAveragePrint * 100) / 100) + "\n");
+                                                System.out.println("Painoindeksien keskiarvo: " + (Math.round(bmiAveragePrint * 100) / 100.00) + "\n");
                                             }
                                         }
 
